@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 import numpy as np
 
-def plot_decision_boundary(X, y, classifier, resolution = 0.01):
+def plot_decision_boundary(X, y, classifier, test_idx = None, resolution = 0.01):
     markers = ('o', 's', '^', 'v', '<')
     colors = ('red', 'blue', 'lightgreen', 'gray', 'cyan')
     cmap = ListedColormap(colors[:len(np.unique(y))])
@@ -30,3 +30,10 @@ def plot_decision_boundary(X, y, classifier, resolution = 0.01):
                   label = f'Class {cl}',
                   edgecolor = 'black' 
       )
+
+    # chap 3 추가 내용
+    # 테스트 샘플을 부각하여 그린다
+    if test_idx:
+      X_test, y_test = X[test_idx, :] , y[test_idx]
+      plt.scatter(X_test[:,0], X_test[:,1],marker = 'o', edgecolor = 'black', c = 'none', alpha = 1.0, linewidth = 1, s = 100, label = 'Test set')
+    
