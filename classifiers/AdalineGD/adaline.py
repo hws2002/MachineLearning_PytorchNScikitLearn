@@ -25,7 +25,7 @@ class AdalineGD:
     def net_input(self, X):
         return np.dot(X, self.w_) + self.b_
     
-    def activatoin(self, X):
+    def activation(self, X):
         return X
     
     def predict(self, X):
